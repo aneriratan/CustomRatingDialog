@@ -50,10 +50,12 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                // groupId and version intentionally omitted — they inherit from
-                // project.group / project.version above, which JitPack overrides
-                // at build time with your GitHub coordinates and the git tag.
+                // groupId/version read from project.group/project.version (set
+                // above with local defaults). JitPack overrides those at build
+                // time via -Pgroup/-Pversion, so its coordinates + git tag win.
+                groupId = project.group.toString()
                 artifactId = "ratingdialog"
+                version = project.version.toString()
             }
         }
         // No `repositories {}` block: JitPack builds the repo itself and reads the
