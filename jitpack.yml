@@ -1,0 +1,7 @@
+# JitPack build config.
+# The gradlew launcher runs on this JDK; Gradle then auto-provisions the
+# JDK 21 daemon toolchain declared in gradle/gradle-daemon-jvm.properties.
+jdk:
+  - openjdk17
+install:
+  - ./gradlew :ratingdialog:publishToMavenLocal
